@@ -1,7 +1,9 @@
 Empathy as Code: Inline Help, Comment and Documentation
+
 Awesome Inc. website Docs
 
-Welcome to our site, please follow the next information in order to have a working website.
+Welcome to our site, 
+
 Prerequisites
 
     Hugo v0.80+ must be used.
