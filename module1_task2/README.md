@@ -1,14 +1,18 @@
- Empathy as Code: Inline Help, Comment and Documentation
-Requirements
+Empathy as Code: Inline Help, Comment and Documentation
+Awesome Inc. website Docs
 
-    Same requirements as the previous task:
-        A Valid Go-Hugo website is provided
-        There are no Git Submodules
-        The theme ananke is installed
-        No directory dist/ committed
-        Makefile present
+Welcome to our site, please follow the next information in order to have a working website.
+Prerequisites
 
-    Add comments in the Makefile to describe what each target is expected to do.
-        These comments should be written on the same line as the targets
-        Each comment should start with two characters #
+    Hugo v0.80+ must be used.
+    Usage of Git Submodules is prohibited.
+    Use the theme "ananke" for the website by following:
+        Note for non-git users at the Step 3.
+    The website is expected to be generated into ./dist folder but this folder should be absent from the repo.
 
+Lifecycle
+
+    post
+    build
+    clean
+    help
