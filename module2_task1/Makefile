@@ -6,7 +6,6 @@ lint: ##lint the code
 
 build: ## Compile source code of the application to a binary named awesome.api
 	@make lint
-	@go get github.com/gorilla/mux
 	@go build
 
 run: ## Run the application in background and write logs in awesome-api.log
@@ -16,7 +15,6 @@ stop: ## Stop the application
 	@pkill awesome-api
 
 clean: ## Stop the application and delete awesome-api and awesome-api.log
-	@make stop
 	@rm -rf awesome-api
 	@rm -rf awesome-api.log
 
