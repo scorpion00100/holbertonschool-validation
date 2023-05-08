@@ -2,11 +2,12 @@ help: ## Show this help usage
 	@cat Makefile | grep "^\w*:.*##.*" | sed 's/## //'
 
 lint: ## Catch such errors without the need to compile or execute the application
-	@golangci-lint run ./*.go
+	@golangci-lint run
 
 build: ## Compile source code of the application to a binary named awesome.api
+	@make lint
 	@go get github.com/gorilla/mux
-	@go build -o awesome-api ./*.go
+	@go build
 
 run: ## Run the application in background and write logs in awesome-api.log
 	@./awesome-api >./awesome-api.log 2>&1 &
