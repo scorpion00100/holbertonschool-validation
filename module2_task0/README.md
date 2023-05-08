@@ -23,3 +23,12 @@ You are expected to write a Makefile to automate the life-cycle of this applicat
     The goals build, run , stop, clean test should be implemented and mapped to the life-cycle stages of the same name
 
 The goal make help must be implemented and print a list of all the goals with a sentence each
+
+## Prerequisites
+
+* Hugo v0.80+ must be used.
+* Usage of Git Submodules is prohibited.
+* Use the theme "ananke" for the website by following:
+  * Note for non-git users at the Step 3.
+* The website is expected to be generated into `./dist` folder but this folder should be absent from the repo.
+
