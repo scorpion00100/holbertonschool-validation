@@ -12,16 +12,25 @@ The life-cycle of this project is the following:
 
     “clean”: Stop the application. Delete the binary awesome-api and the log file awesome-api.log
 
-    “test”: You want to test it to ensure that it behaves as expected. With the application started, you may want to use the command line curl
+    “test”: You want to test it to ensure that it behaves as expected. With the application started, you may want to use the command line curl (or your web browser, or the command wget or any other HTTP client)
+
+Requirements
+
+You are expected to write a Makefile to automate the life-cycle of this application:
+
+    A Makefile should be present and valid
+    The binary awesome-api must NOT exist at the beginning, in the source code
+    The goals build, run , stop, clean test should be implemented and mapped to the life-cycle stages of the same name
+
+The goal make help must be implemented and print a list of all the goals with a sentence each
 
 ## Prerequisites
 
-* Same tools as previous module
-* Golang in v1.15.*
-* NPM v7+ with NodeJS v14.* (stable)
-* Python 3 with pip module
-* golangci-lint
-
+* Hugo v0.80+ must be used.
+* Usage of Git Submodules is prohibited.
+* Use the theme "ananke" for the website by following:
+  * Note for non-git users at the Step 3.
+* The website is expected to be generated into `./dist` folder but this folder should be absent from the repo.
 
 ## Lifecycle
 
