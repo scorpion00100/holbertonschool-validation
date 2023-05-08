@@ -41,3 +41,4 @@ The goal make help must be implemented and print a list of all the goals with a 
 * `stop`
 * `run`
 * `test`
+* `lint`
