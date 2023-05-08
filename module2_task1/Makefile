@@ -3,7 +3,6 @@ help: ## Show this help usage
 
 build: ## Compile source code of the application to a binary named awesome.api
 	@make lint
-	@go get github.com/gorilla/mux
 	@go build
 
 run: ## Run the application in background and write logs in awesome-api.log
