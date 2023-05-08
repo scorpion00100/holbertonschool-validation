@@ -1,6 +1,3 @@
-help: ## Show this help usage
-	@grep "##" Makefile | head -n -1 | tr -d '#'
-
 lint: ##lint the code
 	@golangci-lint run
 
@@ -22,5 +19,8 @@ test: ## Test to ensure expected beahaviour
 	@curl http://localhost:9999
 	@curl http://localhost:9999/health
 
-unit-tests:## addiing unit-tests
+unit-tests: ## addiing unit-tests
 	@go test -v -short -coverprofile=coverage-units.out
+
+help: ## Show this help usage
+	@grep "##" Makefile | head -n -1 | tr -d '#'
