@@ -1,6 +1,3 @@
-help: ## Show this help usage
-	@cat Makefile | grep "^\w*:.*##.*" | sed 's/## //'
-
 lint: ##lint the code
 	@golangci-lint run
 
@@ -21,3 +18,9 @@ clean: ## Stop the application and delete awesome-api and awesome-api.log
 test: ## Test to ensure expected beahaviour
 	@curl http://localhost:9999
 	@curl http://localhost:9999/health
+
+unit-tests:## adding unit-tests
+	@go test -v -short -coverprofile=coverage-units.out
+
+help: ## Show this help usage
+	@grep "##" Makefile | head -n -1 | tr -d '#'
