@@ -1,5 +1,5 @@
 help: ## Show this help usage
-	@cat Makefile | grep "^\w*:.*##.*" | sed 's/## //'
+	@grep "##" Makefile | head -n -1 | tr -d '#'
 
 lint: ##lint the code
 	@golangci-lint run
@@ -22,5 +22,5 @@ test: ## Test to ensure expected beahaviour
 	@curl http://localhost:9999
 	@curl http://localhost:9999/health
 
-unit-tests: ## adding some unit-tests
+unit-tests:## addiing unit-tests
 	@go test -v -short -coverprofile=coverage-units.out
