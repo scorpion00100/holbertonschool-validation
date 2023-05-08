@@ -6,7 +6,7 @@ lint: ## Catch such errors without the need to compile or execute the applicatio
 
 build: ## Compile source code of the application to a binary named awesome.api
 	@go get github.com/gorilla/mux
-	@go build -o awesome-api
+	@go build -o awesome-apii ./*.go
 
 run: ## Run the application in background and write logs in awesome-api.log
 	@./awesome-api >./awesome-api.log 2>&1 &
