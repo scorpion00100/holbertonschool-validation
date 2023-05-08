@@ -2,7 +2,7 @@ help: ## Show this help usage
 	@cat Makefile | grep "^\w*:.*##.*" | sed 's/## //'
 
 lint: ## Catch such errors without the need to compile or execute the application
-	@golangci-lint run
+	@golangci-lint run ./*.go
 
 build: ## Compile source code of the application to a binary named awesome.api
 	@go get github.com/gorilla/mux
@@ -16,8 +16,7 @@ stop: ## Stop the application
 
 clean: ## Stop the application and delete awesome-api and awesome-api.log
 	@make stop
-	@rm -rf awesome-api
-	@rm -rf awesome-api.log
+	@rm -rf awesome-api awesome-api.log || true
 
 test: ## Test to ensure expected beahaviour
 	@curl http://localhost:9999
