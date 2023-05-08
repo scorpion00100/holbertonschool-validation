@@ -16,7 +16,7 @@ stop: ## Stop the application
 
 clean: ## Stop the application and delete awesome-api and awesome-api.log
 	@make stop
-	@rm -rf awesome-api awesome-api.log || true
+	@rm -rf awesome-api awesome-api.log
 
 test: ## Test to ensure expected beahaviour
 	@curl http://localhost:9999
