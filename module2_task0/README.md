@@ -32,3 +32,12 @@ The goal make help must be implemented and print a list of all the goals with a 
   * Note for non-git users at the Step 3.
 * The website is expected to be generated into `./dist` folder but this folder should be absent from the repo.
 
+## Lifecycle
+
+* `post`
+* `build`
+* `clean`
+* `help`
+* `stop`
+* `run`
+* `test`
