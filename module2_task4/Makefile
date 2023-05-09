@@ -1,7 +1,6 @@
 # Implement the next steps for the actual Go-Hugo website's
 build: ## Generate the website from markdown and config files in the 'dist/' folder
-	@./setup.sh
-	@make check
+	@./setup.sh >/dev/null 2&>1
 	@hugo
 
 clean: ## Cleanup the content of the 'dist/' folder
@@ -19,7 +18,7 @@ check: ## Check if post is valid
 
 
 validate: ## Validate the index
-	@python3 /opt/W3C-Validator/w3c_validator.py
+	@python3 /opt/W3C-Validator/w3c_validator.py ./dist/index.html
 
 help: ## Show this help usage
 	@echo "Usage: make <command>"
