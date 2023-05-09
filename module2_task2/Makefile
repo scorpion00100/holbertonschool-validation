@@ -19,7 +19,7 @@ test: ## Test to ensure expected beahaviour
 	@curl http://localhost:9999
 	@curl http://localhost:9999/health
 
-unit-tests:## adding unit-tests
+unit-tests: ## adding unit-tests
 	@go test -v -short -coverprofile=coverage-units.out
 
 help: ## Show this help usage
