@@ -14,7 +14,7 @@ post: ## Create a new blog post using POST_TITLE and POST_NAME env variables
 	@sed -i 's/draft:.*/draft: "true"/' content/posts/$(POST_NAME).md
 
 check: ## Check if post is valid
-	@markdownlint -f ./content/posts/*.md
+	@markdownlint ./content/posts/*.md
 	@markdown-link-check ./content/posts/*.md
 
 validate: ## Validate the index
