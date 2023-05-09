@@ -18,7 +18,7 @@ check: ## Check if post is valid
 
 
 validate: ## Validate the index
-	@python3 /opt/W3C-Validator/w3c_validator.py ./dist/index.html
+	@./w3c_validator.py ./dist/index.html
 
 help: ## Show this help usage
 	@echo "Usage: make <command>"
