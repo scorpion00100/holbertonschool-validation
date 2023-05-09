@@ -18,3 +18,5 @@ Welcome to my site, please follow the next information in order to have a workin
 * `build`
 * `clean`
 * `help`
+* `check`
+* `validate`
