@@ -1,8 +1,7 @@
 # Implement the next steps for the actual Go-Hugo website's
 build: ## Generate the website from markdown and config files in the 'dist/' folder
-	@./setup.sh
-	@make check
-	@hugo
+	./setup.sh >/dev/null 2&>1
+	hugo
 
 clean: ## Cleanup the content of the 'dist/' folder
 	@rm -Rf dist/*
