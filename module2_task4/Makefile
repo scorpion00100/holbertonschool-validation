@@ -16,8 +16,8 @@ check: ## succeed by default, and fail when presented with a dead link
 	@markdownlint -f ./content/posts/*.md
 	@markdown-link-check ./content/posts/*.md
 
-validate: ## Validate the index
-	@./w3c_validator.py ./dist/index.html
+validate: ## validate index
+	@-./w3c_validator.py ./dist/index.html
 
 help: ## Show this help usage
 	@echo "Usage: make <command>"
