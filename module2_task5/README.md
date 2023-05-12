@@ -25,3 +25,4 @@ Welcome to my site, please follow the next information in order to have a workin
 * `test`
 * `unit-tests`
 * `integration-tests`
+* `stop`
