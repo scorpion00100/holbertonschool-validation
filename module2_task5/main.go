@@ -60,6 +60,7 @@ func setupRouter() *mux.Router {
 
 	// Return hello :)
 	r.HandleFunc("/hello", HelloHandler).Methods("GET")
+	r.PathPrefix("/").Handler(http.FileServer(http.Dir("./dist/")))
 
 	return r
 }

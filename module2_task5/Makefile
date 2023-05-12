@@ -1,21 +1,41 @@
 build: ## Generate the website from markdown and config files in the 'dist/' folder
-	./setup.sh
+	go build
+	hugo > /dev/null 2>&1
 	make check
-	hugo
 
 clean: ## Cleanup the content of the 'dist/' folder
-	-rm -rf dist/
+	rm -rf ./dist/ awesome-api awesome-api.log coverage-units.out coverage-integrations.out
+	make stop
 
 post: ## Create a new blog post using POST_TITLE and POST_NAME env variables
-	-hugo new posts/$(POST_NAME).md && echo "---\ntitle: \"$(POST_TITLE)\"\ndate: 2022-11-20T09:03:20-08:00\ndraft: false\n---" > content/posts/$(POST_NAME).md
+	hugo new posts/$(POST_NAME).md
+	sed -i '/title:/c\title: "$(POST_TITLE)"' content/posts/$(POST_NAME).md
 
 check: ## Check validate post
-	markdownlint -f ./content/posts/*.md
-	markdown-link-check ./content/posts/*.md
-
+	markdownlint content/ && markdown-link-check content/posts/*.md
 
 validate: ## Validate the web site
-	-./w3c_validator.py ./dist/index.html
+	python3 opt/W3C-Validator/w3c_validator.py dist/index.html || true
 
-help: ##  Show this help usage
-	-grep "##" Makefile | head -n -1 | tr -d '#'
+run: ## run all apis and logs it
+	./awesome-api > ./awesome-api.log 2>&1 &
+
+stop: ## kills all process by usiing PID
+	pkill awesome-api
+
+lint: ## check all errors
+	golangci-lint run
+
+test: ## testing all files
+	make unit-tests
+	make integration-tests
+	make validate
+
+unit-tests: ## make unit-tests
+	go test -v -short -coverprofile=coverage-units.out
+
+integration-tests: ## make intregration-tests
+	go test -v  -coverprofile=coverage-integrations.out
+
+help: ## show this help usage
+	@fgrep -h "##" $(MAKEFILE_LIST) | sed -e 's/\(\:.*\#\#\)/\:\ /' | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'

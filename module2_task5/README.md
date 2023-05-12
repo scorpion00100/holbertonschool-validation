@@ -20,3 +20,8 @@ Welcome to my site, please follow the next information in order to have a workin
 * `help`
 * `check`
 * `validate`
+* `run`
+* `lint`
+* `test`
+* `unit-tests`
+* `integration-tests`
