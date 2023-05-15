@@ -6,5 +6,5 @@ wget https://github.com/gohugoio/hugo/releases/download/v0.109.0/hugo_extended_0
 tar -xvf hugo_extended_0.109.0_Linux-64bit.tar.gz hugo
 mv hugo /usr/local/bin/
 rm hugo_extended_0.109.0_Linux-64bit.tar.gz
-npm install -g markdownlint-cli
-npm install -g markdown-link-check
+sudo npm install -g markdownlint-cli
+sudo npm install -g markdown-link-check
