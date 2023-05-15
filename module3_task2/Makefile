@@ -15,7 +15,7 @@ check:## Check if post is valid
 	@markdownlint -f ./content/posts/*.md
 	@markdown-link-check ./content/posts/*.md
 
-package: ## Produce a zip file containing the 'dist/' folder
+package: ## Produce zip file containing the 'dist/' folder
 	@hugo
 	@zip -r awesome-website.zip dist/
 
