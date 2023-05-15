@@ -17,6 +17,11 @@ Welcome to my site, please follow the next information in order to have a workin
 * `post`
 * `build`
 * `clean`
+* `package`
+* `lint`
+* `unit-tests`
+* `integrations-tests`
+* `validate`
 * `help`
 
 ## Build Workflow
