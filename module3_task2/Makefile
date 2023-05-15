@@ -3,7 +3,7 @@
 build: ## Build the website
 	@hugo --source=. --destination=dist/
 
-clean: ## Clean up the dist/ directory
+clean: ## Clean up the dist
 	@rm -Rf dist/*
 
 post: ## Create a new blog post
