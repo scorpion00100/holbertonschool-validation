@@ -11,6 +11,9 @@ post: ## Create a new blog post using POST_TITLE and POST_NAME env variables
 	@sed -i 's/title:.*/title: $(POST_TITLE)/' content/posts/$(POST_NAME).md
 	@sed -i 's/draft:.*/draft: "true"/' content/posts/$(POST_NAME).md
 
+check:## Check if post is valid
+	@markdownlint -f ./content/posts/*.md
+	@markdown-link-check ./content/posts/*.md
 
 package: ## Produce a zip file containing the 'dist/' folder
 	@hugo

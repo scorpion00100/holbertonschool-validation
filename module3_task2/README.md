@@ -17,6 +17,7 @@ Welcome to my site, please follow the next information in order to have a workin
 * `post`
 * `build`
 * `clean`
+* `check`
 * `package`
 * `lint`
 * `unit-tests`
