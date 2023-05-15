@@ -1,18 +1,29 @@
-# Q&A
+# Deployment Guide
 
-## What is in the archive and how to unarchive it?
+This guide provides instructions for deploying and managing the application.
 
-- The directory compiled and the api server
-- to unzip it you have to `unzip awesome-website.zip`
+## Archive Contents and Unarchiving
 
-## What are the commands to start and stop the application?
+The archive contains the application code and dependencies. To unarchive it, follow these steps:
 
-- Use the make run command or `./awesome-api > ./awesome-api.log 2>&1 &`
+1. Download the archive file.
+2. Extract the contents using the command: `tar -xf your-archive.tar.gz`
 
-## How to customize where the application logs are written?
+## Start Commands
 
-- None
+- Start the application: "hugo server"
 
-## How to “quickly” verify that the application is running (healthcheck)?
+## Customizing Application Logs
 
-- Do `curl localhost:9999/health`
+To customize the application log location:
+
+1. Open `config.yml`.
+2. Modify the `log_path` setting to specify the desired location.
+3. Save the changes.
+
+## Application Healthcheck
+
+To verify the application is running:
+
+1. Access the healthcheck endpoint: `http://localhost:9999/healthcheck`
+2. Hope it works
