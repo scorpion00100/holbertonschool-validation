@@ -19,8 +19,8 @@ Welcome to my site, please follow the next information in order to have a workin
 * `clean`
 * `help`
 
-## Workflow
+## Build Workflow
 
-* Clone the repository (checkout)
-* Change to the appropriate directory and execute make help
+* The workflow is executed into an Ubuntu 22.04 execution environment
+* Required tools are installed prior to any make target, by executing the script setup.sh
 
