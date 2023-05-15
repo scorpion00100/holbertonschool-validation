@@ -30,7 +30,7 @@ integration-tests: ## Run integration-tests of the project
 	@go test -v -coverprofile=coverage-integrations.out
 
 validate: ## Validate the project
-	@make lint
+	@make
 
 help: ## Show this help usage
 	@echo "Usage: make <command>"
