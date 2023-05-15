@@ -1,26 +1,25 @@
-Empathy as Code: Inline Help, Comment and Documentation
-
-# Awesome Inc. website Docs
-
-Welcome to my site, please follow the next information in order to have a working website.
-
 ## Prerequisites
 
-* Hugo v0.80+ must be used.
-* Usage of Git Submodules is prohibited.
-* Use the theme "ananke" for the website by following:
-  * Note for non-git users at the Step 3.
-* The website is expected to be generated into `./dist` folder but this folder should be absent from the repo.
+go 1.15._
+npm 7+
+node 14._
+golangci-lint
 
 ## Lifecycle
 
-* `post`
-* `build`
-* `clean`
-* `help`
+mkae lint -> do it first, check if there is commun error in the main.go code
+make build -> compile the main in executable and check for error in markdown
+make post -> create a new post with `make POST_TITLE=welcome POST_NAME="New person here" post`
+make run -> launch the server
+make stop -> stop the server
+make test -> test the server
+make clean -> clean the directory
+make check -> check the md files
+make validate -> verify the index.html
+make unit-tests -> show all the unit test present
+make integration-tests -> do all the integration tests present
+make help -> show an help
 
-## Build Workflow
+## Workflow
 
-* The workflow is executed into an Ubuntu 22.04 execution environment
-* Required tools are installed prior to any make target, by executing the script setup.sh
-
+On push and at 10:30 UTC github will check for the code
