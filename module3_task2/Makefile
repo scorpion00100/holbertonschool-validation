@@ -20,10 +20,13 @@ lint: ## Check markdown files for any syntax mistake
 	@markdownlint README.md DEPLOY.md
 
 unit-tests: ## Run unit-tets of the project
+	@go test -v -short -coverprofile=coverage-units.out
 
 integration-tests: ## Run integration-tests of the project
+	@go test -v -coverprofile=coverage-integrations.out
 
 validate: ## Validate the project
+	@make lint
 
 help: ## Show the available targets and their usage
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
