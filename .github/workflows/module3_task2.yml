@@ -1,52 +1,59 @@
----
+# Earlier Feedback with Continuous Delivery
+
 name: module3_task2
 
-"on":
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or once per day at midnight
   push:
-    branches:
-      - 'master'
-
+    # branches: [master]
+    paths:
+      - 'module3_task2/**'
   schedule:
-    - cron: "30 10 * * *"
+    - cron: '0 0 * * *'
 
+# Jobs has five steps
 jobs:
+  # This workflow contains a single job called "build"
   build:
+    # The type of runner that the job will run on
     runs-on: ubuntu-22.04
+
+    # Steps represent sequence of tasks that will be executed as par of the job
     steps:
-      - name: Clone the repo
+      # Checks-out your repository under $GITHUB_WORKSPACE
+      # so the job can access it
+      - name: Clone the repository
         uses: actions/checkout@v3
-        with:
-          repository: ''
 
-      - name: Running the setup
-        run: ./module3_task2/setup.sh
-
-      - name: Building
-        run: cd module3_task2/ && make build
-
-      - name: Run api
-        run: cd module3_task2/ && make run
-
-      - name: Create a test post
+      # Ensure all the required tools are installed prior to any make target
+      - name: Execute the script setup.sh
         run: |
-          cd module3_task2/ &&
-          POST_TITLE=welcometest POST_NAME=testing make post
+          cd module3_task2/
+          ./setup.sh
 
-      - name: Testing
-        run: cd module3_task2/ && make test
+      # Check syntax on markdown files
+      - name: Run markdownlint on markdown files
+        run: make lint -C module3_task2/
 
-      - name: Cleaning
-        run: cd module3_task2/ && make clean
+      # Go to the right folder and execute 'make build'
+      - name: Build the application
+        run: make build -C module3_task2/
 
-      - name: Linter
-        run: cd module3_task2/ && make lint
+      # Produce a zip file containing the dist folder
+      - name: Archive the dist folder inside a zip file
+        run: make package -C module3_task2/
 
-      - name: Packaging
-        run: cd module3_task2/ && make package
+      # Additional steps form past module
+      - name: Run additional make rules
+        run: |
+          make unit-tests -C module3_task2/
+          make integration-tests -C module3_task2/
+          make validate -C module3_task2/
 
-      - name: Archive production artifacts
+      # Archive the zip file as artifact
+      - name: Archive code coverage results
         uses: actions/upload-artifact@v3
         with:
-          name: Saving the zip file
-          path: |
-            module3_task2/awesome-website.zip
+          name: Archive awesome-website.zip as artifact
+          path: module3_task2/awesome-website.zip
