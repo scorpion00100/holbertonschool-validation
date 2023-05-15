@@ -18,3 +18,9 @@ Welcome to my site, please follow the next information in order to have a workin
 * `build`
 * `clean`
 * `help`
+
+## Workflow
+
+* Clone the repository (checkout)
+* Change to the appropriate directory and execute make help
+
