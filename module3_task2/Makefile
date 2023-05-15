@@ -11,7 +11,21 @@ post: ## Create a new blog post using POST_TITLE and POST_NAME env variables
 	@sed -i 's/title:.*/title: $(POST_TITLE)/' content/posts/$(POST_NAME).md
 	@sed -i 's/draft:.*/draft: "true"/' content/posts/$(POST_NAME).md
 
+
+package: ## Produce a zip file containing the 'dist/' folder
+	@hugo
+	@zip -r awesome-website.zip dist/
+
+lint: ## Check markdown files for any syntax mistake
+	@markdownlint README.md DEPLOY.md
+
+unit-tests: ## Run unit-tets of the project
+
+integration-tests: ## Run integration-tests of the project
+
+validate: ## Validate the project
+
 help: ## Show this help usage
 	@echo "Usage: make <command>"
 	@echo "-----"
-	@cat Makefile | grep "^\w*:.*##.*" | sed 's/## //'
+	@fgrep -h "##" Makefile | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//' | head -9
