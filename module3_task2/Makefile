@@ -17,13 +17,17 @@ package: ## Produce a zip file containing the 'dist/' folder
 	@zip -r awesome-website.zip dist/
 
 lint: ## Check markdown files for any syntax mistake
-	@markdownlint README.md DEPLOY.md
+	@markdownlint README.md 
+	@markdownlint DEPLOY.md
 
 unit-tests: ## Run unit-tets of the project
+	@go test -v -short -coverprofile=coverage-units.out
 
 integration-tests: ## Run integration-tests of the project
+	@go test -v -coverprofile=coverage-integrations.out
 
 validate: ## Validate the project
+	@make lint
 
 help: ## Show this help usage
 	@echo "Usage: make <command>"
