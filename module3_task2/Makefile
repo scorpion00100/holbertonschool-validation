@@ -28,5 +28,5 @@ integration-tests: ## run intregrated tests
 	go test -v  -coverprofile=coverage-integrations.out
 package: build ## compile everything and zipit
 	zip -r awesome-website.zip dist/ awesome-api 
-help: ## Display this help
+help: ## Display this help all file
 	@fgrep -h "##" $(MAKEFILE_LIST) | sed -e 's/\(\:.*\#\#\)/\:\ /' | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
