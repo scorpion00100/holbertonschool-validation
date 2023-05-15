@@ -17,5 +17,5 @@
 ## How to "quickly" verify that the application is running (healthcheck)?
 
 * To verify if the go-hugo website is running correctly run the command: hugo server
-* Then verify the status of the website in your localhost by clicking the http://localhost:1313/ given by the previous step
+* Then verify the status of the website in your localhost by clicking the http://localhost:9999 given by the previous step
 
