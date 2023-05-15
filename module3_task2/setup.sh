@@ -10,6 +10,7 @@ rm hugo_extended_0.109.0_Linux-64bit.tar.gz
 # Install markdownlint and zip tools
 apt-get install zip -y
 npm install -g markdownlint-cli -y
+npm install -g markdown-link-check -y
 
 #generate go-hugo website
 make build
