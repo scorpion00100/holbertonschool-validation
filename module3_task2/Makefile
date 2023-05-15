@@ -19,7 +19,7 @@ package: ## Produce a zip file containing the 'dist/' folder
 	@hugo
 	@zip -r awesome-website.zip dist/
 
-lint: ## Check markdown files for any syntax mistake
+lint: ## Check a markdown files for any syntax mistake
 	@markdownlint README.md DEPLOY.md
 
 unit-tests: ## Run unit-tets of the project
