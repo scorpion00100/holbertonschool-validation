@@ -10,7 +10,7 @@
 * To generate (start) the go-hugo website run the command: make build
 * To clean (stop) the go-hugo website run the command: make clean
 
-## How customize where the application logs are written?
+## How to customize where the application logs are written?
 
 * You can customize the location of the logs by:
 
