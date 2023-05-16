@@ -1,29 +1,22 @@
-# Deployment Guide
+# Operations team's FAQ
 
-This guide provides instructions for deploying and managing the application.
+## What is in the archive and how to unarchive it?
 
-## Archive Contents and Unarchiving
+* In the `awesome-website.zip` archive you will encounter the `dist/` folder
+* To unarchive it in your current directory use the command line:
+`unzip awesome-website.zip`
 
-The archive contains the application code and dependencies. To unarchive it, follow these steps:
+## What are the commands to start and stop the application?
 
-1. Download the archive file.
-2. Extract the contents using the command: `tar -xf your-archive.tar.gz`
+* To generate (start) the go-hugo website run the command: `make build`
+* To clean (stop) the go-hugo website run the command: `make clean`
 
-## Start Commands
+## How to customize where the application logs are written?
 
-- Start the application: "hugo server"
+* You can customize the location of the logs by:
 
-## Customizing Application Logs
+## How to “quickly” verify that the application is running (healthcheck)?
 
-To customize the application log location:
-
-1. Open `config.yml`.
-2. Modify the `log_path` setting to specify the desired location.
-3. Save the changes.
-
-## Application Healthcheck
-
-To verify the application is running:
-
-1. Access the healthcheck endpoint: `http://localhost:9999/healthcheck`
-2. Hope it works
+* To veryfy is the go-hugo wesite is runnig correctly run the command: `hugo server`
+* Then verify the status of the website in your localhost by clicking the
+`http://localhost:1313/` given by the previous step

@@ -1,32 +1,30 @@
-build: ## Build the website
+# Implement the next steps for the actual Go-Hugo website's source code
+build: ## Generate the website from markdown and config files in the 'dist/' folder
 	@hugo
 
-clean: ## Clean the website
-	-rm -r dist/
-	-rm awesome-website.zip
+clean: ## Cleanup the content of the 'dist/' folder
+	@rm -Rf dist/*
 
-post: ## Create a new post
-	-hugo new posts/$(POST_NAME).md && echo "---\ntitle: \"$(POST_TITLE)\"\ndate: 2022-11-20T09:03:20-08:00\ndraft: false\n---" > content/posts/$(POST_NAME).md
+post: ## Create a new blog post using POST_TITLE and POST_NAME env variables
+	@rm -Rf content/posts/$(POST_NAME).md
+	@hugo new posts/$(POST_NAME).md
+	@sed -i 's/title:.*/title: $(POST_TITLE)/' content/posts/$(POST_NAME).md
+	@sed -i 's/draft:.*/draft: "false"/' content/posts/$(POST_NAME).md
 
-check: ## Check if post is valid
-	markdownlint -f ./content/posts/*.md
-	markdown-link-check ./content/posts/*.md
+package: ## Produce a zip file containing the 'dist/' folder
+	@hugo
+	@zip -r awesome-website.zip dist/
 
-unit-tests: ## Make unittest
-	go test -v -short -coverprofile=coverage-units.out
+lint: ## Check markdown files for any syntax mistake
+	@markdownlint README.md DEPLOY.md
 
-integration-tests: ## run intregrated tests
-	go test -v -coverprofile=coverage-integrations.out
+unit-tests: ## Run unit-tets of the project
 
-validate: ## Validate the index
-	make lint
+integration-tests: ## Run integration-tests of the project
 
-package: ## Create the .zip package of the server
-	-zip -r awesome-website.zip awesome-api dist/
+validate: ## Validate the project
 
-lint: ## Lint Readme and Deploy
-	-markdownlint README.md
-	-markdownlint DEPLOY.md
-
-help: ## Makefile help 
-	-grep "##" Makefile | head -n -1 | tr -d '#'
+help: ## Show this help usage
+	@echo "Usage: make <command>"
+	@echo "-----"
+	@fgrep -h "##" Makefile | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//' | head -9
