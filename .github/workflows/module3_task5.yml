@@ -7,7 +7,7 @@ name: module3_task5
 on:
   # Triggers of the workflow
   push:
-    branches: [master, main]
+    branches: [main]
     # paths:
     # - 'module3_task5/**'
     tags:
