@@ -1,12 +1,5 @@
 build: ## Build the website
-	./setup.sh
-	make check
-	make lint
-	make unit-tests
-	make integration-tests
-	make validate
-	make package
-	hugo
+	@hugo
 
 clean: ## Clean the website
 	-rm -r dist/
