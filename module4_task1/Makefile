@@ -1,5 +1,10 @@
 # Implement the next steps for the actual Go-Hugo website's source code
+.PHONY: build
+
 build: ## Generate the website from markdown and config files in the 'dist/' folder
+	@curl -L https://github.com/gohugoio/hugo/releases/download/v0.109.0/hugo_extended_0.109.0_linux-amd64.deb -o hugo.deb
+	@apt install ./hugo.deb
+	@rm ./hugo.deb
 	@hugo
 	@touch awesome-api
 
@@ -17,6 +22,10 @@ package: ## Produce a zip file containing the 'dist/' folder
 	@zip -r awesome-website.zip dist/
 
 lint: ## Check markdown files for any syntax mistake
+	@apt install curl -y
+	@curl --silent --location https://deb.nodesource.com/setup_16.x | bash -
+	@apt install nodejs -y
+	@npm install -g markdownlint-cli || true
 	@markdownlint README.md DEPLOY.md
 
 unit-tests: ## Run unit-tets of the project
@@ -26,6 +35,10 @@ integration-tests: ## Run integration-tests of the project
 	@touch coverage-integrations.out
 
 validate: ## Validate the project
+
+
+build-docker: ## Define a docekr image
+	@docker build -t awesome:build -f ./build/Dockerfile
 
 help: ## Show this help usage
 	@echo "Usage: make <command>"
