@@ -1,9 +1,11 @@
-FROM golang:latest
+FROM golang:1.17
 
 WORKDIR /app
 COPY . /app
 
-RUN apt-get update && apt-get install -y --no-install-recommends zip xz-utils && \
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    zip \
+    xz-utils && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
@@ -25,4 +27,3 @@ RUN npm install -g markdownlint-cli@0.33.0 && \
     hugo version && \
     node --version && \
     npm --version && \
-    pwd
