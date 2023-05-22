@@ -26,6 +26,10 @@ lint: ## Check markdown files for any syntax mistake
 	@apt install nodejs -y
 	@npm install -g markdownlint-cli || true
 	@markdownlint README.md DEPLOY.md
+	@curl --silent --location https://github.com/hadolint/hadolint/releases/download/v2.12.0/hadolint-Linux-x86_64 -o hadolint
+	@mv hadolint /usr/local/bin/
+	@chmod +x /usr/local/bin/hadolint
+	@hadolint .build/Dockerfile
 
 unit-tests: ## Run unit-tets of the project
 	@touch coverage-units.out
@@ -38,7 +42,14 @@ validate: ## Validate the project
 build-docker: ## Define a docekr image
 	@docker build -t awesome:build -f .build/Dockerfile .
 
+
+docker-tests: ## Create and test a docker image
+	@curl -LO https://storage.googleapis.com/container-structure-test/latest/container-structure-test-linux-amd64
+	@chmod +x container-structure-test-linux-amd64
+	@sudo mv container-structure-test-linux-amd64 /usr/local/bin/container-structure-test
+	@container-structure-test test --image awesome:build --config .build/cst.yml
+
 help: ## Show this help usage
 	@echo "Usage: make <command>"
 	@echo "-----"
-	@fgrep -h "##" Makefile | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//' | head -9
+	@fgrep -h "##" Makefile | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//' | head -11
